@@ -9,11 +9,20 @@ import java.util.Scanner;
  *
  * @author Evan
  */
-public class Djikstra {
 
-    /**
-     * @param args the command line arguments
-     */
+/*This class takes an input from a text file of:
+
+-number of problems to solve. Then, for each problem:
+-size of the graph matrix, aka number of nodes in the graph
+-starting node
+-ending node
+-cost matrix
+
+The class then outputs the minimum cost, along with the assosciated path.
+*/
+
+public class Djikstra {
+    /*Gets user input and calls helper method*/
     public static void main(String[] args) {
         try{
         Scanner sc = new Scanner(new File("in1.txt"));
@@ -37,7 +46,10 @@ public class Djikstra {
           
     }
     
-    
+    /* Creates necessary info (visited array, costs array) and then finds 
+    the minimum costs from all calculated costs, then prints the 
+    minimum cost and assosciated path.
+    */
     public static void computeDijkstra(int[][] nums, int start, int end){
         boolean[][] visited = new boolean[nums.length][nums.length];
         for (int i=0; i<nums.length; i++){
@@ -48,6 +60,7 @@ public class Djikstra {
         String[] paths = new String[(int)(Math.pow(nums.length,2))];
         for (int i=0; i<paths.length; i++)
             paths[i]="";
+        /*Call computation method*/
         int[] arr= computeDijkstra(nums, start, end, visited, new int[nums.length],1, costs,paths);
         int minCost=Integer.MAX_VALUE;
         int minCostIndex=0;
@@ -75,6 +88,7 @@ public class Djikstra {
         System.out.println();
     }
     
+    /*Computes all costs and associated paths*/
     public static int[] computeDijkstra(int[][] nums, int current, int end, boolean visited[][], int[] arr,int step, int[] costs, String[] paths){
         if (current==end){ 
             for (int i=0; i<costs.length; i++){
