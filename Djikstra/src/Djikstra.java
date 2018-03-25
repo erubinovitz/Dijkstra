@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Evan
+ * @author Evan Rubinovitz
  */
 
 /*This class takes an input from a text file of:
